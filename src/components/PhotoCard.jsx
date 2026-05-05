@@ -1,0 +1,56 @@
+import React from "react";
+import Image from "next/image";
+import { Button, Card, Chip, Separator } from "@heroui/react";
+import { FaHeart } from "react-icons/fa";
+import { BiDownload } from "react-icons/bi";
+import Link from "next/link";
+
+const PhotoCard = ({ photo }) => {
+  // console.log(photo);
+  return (
+    <Card className=" border-2 border-gray-300 rounded-lg shadow-md p-4">
+      <div className="relative w-full aspect-square">
+        <Image
+          src={photo.imageUrl}
+          alt={photo.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        //   height={100}
+        //   width={100}
+          className=" object-cover rounded-xl"
+        />
+          <Chip size="sm" className="absolute right-2 top-2">{photo.category}</Chip>
+      </div>
+      <div>
+        <h2 className="font-medium">{photo.title}</h2>
+      </div>
+
+      <div className="flex gap-5">
+        <div className="flex items-center gap-2">
+          <p>
+            <FaHeart />
+          </p>
+          <p>{photo.likes}</p>
+        </div>
+
+        <Separator orientation="vertical" />
+
+        <div className="flex items-center gap-2">
+          <p>
+            <BiDownload />
+          </p>
+          <p>{photo.downloads}</p>
+        </div>
+      </div>
+
+      <Link href={`/all-photos/${photo.id}`}>
+        {" "}
+        <Button variant="outline" className={"w-full"}>
+          View
+        </Button>
+      </Link>
+    </Card>
+  );
+};
+
+export default PhotoCard;

@@ -24,8 +24,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="pixgen logo"
+                // fill
                 width={32}
                 height={32}
                 className="dark:brightness-200"
